@@ -3,10 +3,10 @@ require 'open-uri'
 
 def scrape_crypto_data
   url = 'https://coinmarketcap.com/all/views/all/'
-  doc = Nokogiri::HTML(URI.open(url))
+  document_html = Nokogiri::HTML(URI.open(url))
   crypto_data = []
 
-  rows = doc.css('tr.cmc-table-row')
+  rows = document_html.css('tr.cmc-table-row')
 
   rows.each do |row|
     symbol = row.css('td.cmc-table__cell.cmc-table__cell--sort-by__symbol').text
